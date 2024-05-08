@@ -90,31 +90,29 @@ fun ChatScreen(modifier: Modifier = Modifier) {
             )
             LazyColumn {
                 items(myChats) {chat ->
-                    Card(
-                        modifier
-                            .fillMaxWidth()
-                            .height(100.dp)
-                            .padding(8.dp),
-                        shape = RoundedCornerShape(5.dp)
-
-                    ) {
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier.fillMaxWidth().padding(8.dp)
-
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.fillMaxWidth()
+                    ){
+                        Image(
+                            painter = painterResource(id = chat.image),
+                            contentDescription = null,
+                            Modifier
+                                .clip(CircleShape)
+                                .padding(16.dp)
+                                .size(30.dp)
+                            //.padding(top = 20.dp)
+                        )
+                        Spacer(modifier = Modifier.width(2.dp))
+                        Card(
+                            modifier
+                                .fillMaxWidth()
+                                .height(100.dp)
+                                .padding(10.dp),
+                            shape = RoundedCornerShape(5.dp)
 
                         ) {
-                            Image(
-                                painter = painterResource(id = chat.image),
-                                contentDescription = null,
-                                Modifier
-                                    .clip(CircleShape)
-                                    .size(30.dp)
-                                    //.padding(top = 20.dp)
-                            )
-                            Spacer(modifier = Modifier.width(8.dp))
                             Column(
-//                                verticalArrangement = Arrangement.spacedBy(8.dp)
                                 horizontalAlignment = Alignment.Start,
                                 modifier = Modifier.padding(8.dp)
                             ) {
@@ -123,7 +121,7 @@ fun ChatScreen(modifier: Modifier = Modifier) {
                                     text = chat.receiverUsername,
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 16.sp
-                                    )
+                                )
                                 // sender - message
                                 Row() {
                                     Text(
